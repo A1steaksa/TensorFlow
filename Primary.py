@@ -135,7 +135,12 @@ def Driver():
 
         testInputPlaceholder = tf.placeholder(tf.float32, shape=(1, 1024))
         if run:
+
+            print( sess.run( testInputPlaceholder, feed_dict = { testInputPlaceholder: testData } ) )
+
             print( "Accuracy: ", accuracy.eval( { inputPlaceholder: x_data, outputPlaceholder: y_data } ) )
 
 
 Driver()
+
+
