@@ -30,8 +30,10 @@ y_data = np.array([
 [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0]
 ])
 
+
+
 # Parameters
-inputCount = 32
+inputCount = 1024
 hiddenLayerNeuronCount = 1024
 outputNeuronCount = 1
 learningRate = 25
@@ -39,8 +41,8 @@ epochs = 10000
 display_step = 1000
 
 # Placeholders
-inputPlaceholder = tf.placeholder( tf.float32 )
-outputPlaceholder = tf.placeholder( tf.float32 )
+inputPlaceholder = tf.placeholder( tf.float32 , shape=(32,1024))
+outputPlaceholder = tf.placeholder( tf.float32 , shape=(32,1))
 
 # Weights
 weights1 = tf.Variable( tf.random_uniform( [ inputCount, hiddenLayerNeuronCount ], -1.0, 1.0 ) )
