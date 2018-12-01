@@ -43,11 +43,11 @@ def Driver():
     hiddenLayerNeuronCount = 1024
     outputNeuronCount = 1
     learningRate = 0.01
-    epochs = 1000
+    epochs = 5000
     display_step = 100
 
     # Placeholders
-    inputPlaceholder = tf.placeholder( tf.float32 , shape=(20,1024))
+    inputPlaceholder = tf.placeholder( tf.float32 , shape=(None,1024))
     outputPlaceholder = tf.placeholder( tf.float32 , shape=(None,1))
 
     # Weights
@@ -133,10 +133,18 @@ def Driver():
              140, 165, 163, 157, 151, ],
         ])
 
-        testInputPlaceholder = tf.placeholder(tf.float32, shape=(1, 1024))
+        testInputPlaceholder = tf.placeholder(tf.float32, shape=(1024))
         if run:
 
-            print( sess.run( testInputPlaceholder, feed_dict = { testInputPlaceholder: testData } ) )
+            print(
+                sess.run(
+                    [outputLayer],
+                    feed_dict={
+                        inputPlaceholder:
+                            testData
+                    }
+                )
+            )
 
             print( "Accuracy: ", accuracy.eval( { inputPlaceholder: x_data, outputPlaceholder: y_data } ) )
 
